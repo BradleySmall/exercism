@@ -8,6 +8,10 @@
 (defun verse (beer-verse)
   "verse returns a single verse of the beer song."
   (cond
+    ((> beer-verse 2)  
+      (format nil "~A bottles of beer on the wall, ~A bottles of beer.~&~
+        Take one down and pass it around, ~A bottles of beer on the wall.~%"
+              beer-verse beer-verse (- beer-verse 1)))
     ((= beer-verse 0)
       (format nil "No more bottles of beer on the wall, no more bottles of beer.~&~
         Go to the store and buy some more, 99 bottles of beer on the wall.~%"))
@@ -16,11 +20,7 @@
         Take it down and pass it around, no more bottles of beer on the wall.~%"))
     ((= beer-verse 2)
       (format nil "2 bottles of beer on the wall, 2 bottles of beer.~&~
-        Take one down and pass it around, 1 bottle of beer on the wall.~%"))
-    (t  
-      (format nil "~A bottles of beer on the wall, ~A bottles of beer.~&~
-        Take one down and pass it around, ~A bottles of beer on the wall.~%"
-              beer-verse beer-verse (- beer-verse 1)))))
+        Take one down and pass it around, 1 bottle of beer on the wall.~%"))))
 
 (defun sing (begin-verse &optional (end-verse 0))
   "sing returns the beer song, from begin verse to the end verse"
