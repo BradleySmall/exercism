@@ -1,0 +1,15 @@
+.exercism
+.lein-failures
+.lein-repl-history
+*.lock
+.stack-work/
+target/
+__pycache__
+*.lock
+*.sum
+_build
+*.app.src
+.eunit/
+.rebar/
+*.lx64fsl
+*.fasl
