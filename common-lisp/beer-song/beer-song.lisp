@@ -24,6 +24,6 @@
 
 (defun sing (begin-verse &optional (end-verse 0))
   "sing returns the beer song, from begin verse to the end verse"
-  (loop for beer-verse downfrom begin-verse to end-verse by 1
-        collect (verse beer-verse) into result finally (return (format nil "~{~A~%~}" result)))   
-  )
+  (loop :for beer-verse :downfrom begin-verse :to end-verse :by 1
+        :collect (verse beer-verse) :into result
+        :finally (return (format nil "~{~A~%~}" result))))
