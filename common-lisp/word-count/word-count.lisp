@@ -6,9 +6,11 @@
 
 (defun count-words (sentence)
   (loop
-     :with res-list = '()
-     :for x :in (uiop:split-string sentence :separator '(#\Space #\, #\Newline #\Return ))
-     :do (if (assoc (string-trim "'." x) res-list :test #'string-equal)
-             (incf (cdr (assoc (string-trim "'!@#$%^&*()_+:;{}|,.-=`~<>?/" x) res-list :test #'string-equal)))
-             (if (/= 0 (length (string-trim "'!@#$%^&*()_+:;{}|,.-=`~<>?/" x))) (setq res-list (acons (string-trim "'!@#$%^&*()_+:;{}|,.-=`~<>?/" (string-downcase x)) 1 res-list))))
-     :finally (return res-list)))
+    :with res-list = '()
+    :for x :in (uiop:split-string sentence :separator '(#\Space #\, #\Newline #\Return ))
+    :do (let ((word (string-downcase (string-trim "'!@#$%^&*()_+:;{}|,.-=`~<>?/" x))))
+          (if (assoc word res-list :test #'string-equal)
+              (incf (cdr (assoc word res-list :test #'string-equal)))
+              (if (/= 0 (length word))
+                  (setq res-list (acons word 1 res-list)))))
+    :finally (return res-list)))

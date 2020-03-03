@@ -108,15 +108,15 @@ three")))
 
 
 (define-test
-  alternating-word-separators-not-detected-as-a-word
-  (assert-alist-equal
-    '(("one" . 1) ("two" . 1) ("three" . 1))
-    (word-count:count-words ",
+    alternating-word-separators-not-detected-as-a-word
+    (assert-alist-equal
+     '(("one" . 1) ("two" . 1) ("three" . 1))
+     (word-count:count-words ",
 ,one,
  ,two
  'three'")))
 
-#-xlisp-test
-(let ((*print-errors* t)
+#-xlisp-test ()
+(LET ((*PRINT-ERRORS* T)
       (*print-failures* t))
   (run-tests :all))
