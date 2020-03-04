@@ -19,11 +19,10 @@
    (sort (copy-seq expected) #'string< :key #'car)
    (sort (copy-seq actual) #'string< :key #'car)))
 
-(define-test
-  count-one-word
+(define-test count-one-word
   (assert-alist-equal
-    '(("word" . 1))
-    (word-count:count-words "word")))
+   '(("word" . 1))
+   (word-count:count-words "word")))
 
 
 (define-test
