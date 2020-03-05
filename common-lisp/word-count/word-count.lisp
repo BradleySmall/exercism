@@ -5,12 +5,12 @@
 (in-package #:word-count)
 
 (defun split-string (string &optional (delims '(#\space)))
-  (labels ((split-string-r (string delims list)
-             (let ((pos-delim (position-if (lambda (char) (position char delims)) string)))
+  (labels ((recurse (string  list)
+             (let ((pos-delim (position-if (lambda (char) (member char delims)) string)))
                (if pos-delim
-                   (split-string-r (subseq string  (+ 1  pos-delim)) delims (push (subseq string 0 pos-delim) list))
+                   (recurse (subseq string  (1+ pos-delim)) (push (subseq string 0 pos-delim) list))
                    (push string list)))))
-    (split-string-r string delims '())))
+    (recurse string '())))
 
 (defun count-words (sentence)
   (loop
