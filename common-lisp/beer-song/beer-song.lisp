@@ -11,14 +11,10 @@
     ((> beer-verse 0)  
       (format nil "~A bottle~:p of beer on the wall, ~A bottle~:p of beer.~&~
         Take ~[it~:;one~] down and pass it around, ~:[no more~;~:*~A~] bottle~:p of beer on the wall.~%"
-              beer-verse beer-verse (- beer-verse 1) (- beer-verse 1)))
+              beer-verse beer-verse (- beer-verse 1) (if (zerop (- beer-verse 1)) nil (- beer-verse 1))))
     ((= beer-verse 0)
       (format nil "No more bottles of beer on the wall, no more bottles of beer.~&~
-        Go to the store and buy some more, 99 bottles of beer on the wall.~%"))
-    ;; ((= beer-verse 1)
-    ;;   (format nil "1 bottle of beer on the wall, 1 bottle of beer.~&~
-    ;;     Take it down and pass it around, no more bottles of beer on the wall.~%"))
-    ))
+        Go to the store and buy some more, 99 bottles of beer on the wall.~%"))))
 
 (defun sing (begin-verse &optional (end-verse 0))
   "sing returns the beer song, from begin verse to the end verse"
